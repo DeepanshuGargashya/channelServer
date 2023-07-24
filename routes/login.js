@@ -57,10 +57,13 @@ router.post("/sendotp", [], async (req, res) => {
         };
         res.send(payload);
       } else {
+        var val = Math.floor(1000 + Math.random() * 9000);
+        await OTPModel.create({ ambId: user._id, otp: val });
+        sendMail("your channel account OTP", val, user.email);
         console.log(user);
         var payload = {
           status: 200,
-          data: user,
+          data: user._id,
           message: "success",
         };
         res.send(payload);
@@ -108,7 +111,10 @@ router.post("/verifyotp", [], async (req, res) => {
   } catch (e) {
     console.log(e);
   }
-  var validOtp = await OTPModel.findOne({ ambId: req.body.id });
+  var validOtp = await OTPModel.findOne({
+    ambId: req.body.id,
+    otp: req.body.otp,
+  });
   console.log(user);
   if (user !== null && validOtp !== null && req.body.otp === validOtp?.otp) {
     await OTPModel.deleteOne({ ambId: req.body.id });
