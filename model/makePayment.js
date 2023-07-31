@@ -5,6 +5,12 @@ const MakePaymentModel = new Schema({
   accNo: {
     type: String,
   },
+  totalAmount: {
+    type: Number,
+  },
+  ambId: {
+    type: Schema.Types.ObjectId,
+  },
 
   channels: {
     type: [

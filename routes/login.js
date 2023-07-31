@@ -117,7 +117,7 @@ router.post("/verifyotp", [], async (req, res) => {
   });
   console.log(user);
   if (user !== null && validOtp !== null && req.body.otp === validOtp?.otp) {
-    await OTPModel.deleteOne({ ambId: req.body.id });
+    await OTPModel.deleteOne({ ambId: req.body.id, otp: req.body.otp });
     var payload = {
       status: 200,
       data: user,

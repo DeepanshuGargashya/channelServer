@@ -5,6 +5,9 @@ const AccountsModel = new Schema({
   accNo: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   mobile: {
     type: String,
   },

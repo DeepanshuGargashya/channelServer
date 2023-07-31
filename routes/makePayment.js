@@ -18,6 +18,8 @@ router.post("/", [], async (req, res) => {
     if (channelPriceSum === req.body.totalAmount) {
       await MakePaymentModel.create({
         accNo: req.body.accountNumber,
+        ambId: req.body.ambId,
+        totalAmount: req.body.totalAmount,
         channels: channelList,
       });
       var payload = {
