@@ -1,11 +1,12 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-
-mongoose.connect('mongodb://0.0.0.0:27017/channelServer').then(()=>{
+mongoose
+  .connect("mongodb://0.0.0.0:27017/channelServer")
+  .then(() => {
     console.log("Successfully started");
-}).catch(function (err) {
-  console.log(err);
-});
-
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
 
 module.exports = mongoose;
