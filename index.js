@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 const auth = require("./routes/login");
 const channelList = require("./routes/channelList");
 const makePayment = require("./routes/makePayment");
+const history = require("./routes/paymentHistory");
+const contacts = require("./routes/contact");
 
 // const Testcolumn = require('./model/testmodel')
 // const auth = require('./model/testmodel')
@@ -27,3 +29,5 @@ app.listen(port, () => {
 app.use("/auth", auth);
 app.use("/channelList", channelList);
 app.use("/makePayment", makePayment);
+app.use("/history", history);
+app.use("/contact", contacts);
