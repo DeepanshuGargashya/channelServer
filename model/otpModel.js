@@ -5,8 +5,12 @@ const OTPModel = new Schema({
   ambId: {
     type: Schema.Types.ObjectId,
   },
+  adminId: {
+    type: Schema.Types.ObjectId,
+  },
   otp: {
     type: String,
+    required: true,
   },
 });
 

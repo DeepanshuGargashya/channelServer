@@ -22,6 +22,26 @@ router.post("/", [], async (req, res) => {
 
     res.send(payload);
   }
+  router.get("/admin", [], async (req, res) => {
+    var payload = [];
+    await ContactModel.find()
+      .then((res) => {
+        payload = {
+          status: 200,
+          data: res,
+          message: "success",
+        };
+      })
+      .catch((err) => {
+        console.log(err);
+        payload = {
+          status: 402,
+          data: "not found",
+          message: "fail",
+        };
+      });
+    res.send(payload);
+  });
 });
 
 module.exports = router;
